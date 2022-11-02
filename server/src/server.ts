@@ -19,7 +19,14 @@ connectToDatabase(ATLAS_URI)
         const app = express();
         app.use(cors());
         app.use("/employees", employeeRouter);
-
+        
+        app.use(function (req,res,next){
+            res.setHeader('Access-Control-Allow-Origin','*');
+            res.setHeader('Access-Control-Allow-Origin','GET,POST,PUT,DELETE');
+            res.setHeader('Access-Control-Allow-Origin','X-Requested-With,content-type');
+            res.setHeader('Access-Control-Allow-Origin','true');
+            next();
+        });
         // start the Express server
         app.listen(5200, () => {
             console.log(`Server running at http://localhost:5200...`);

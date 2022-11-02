@@ -7,7 +7,7 @@ import { Employee } from './employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private url = '172.17.0.1:5200';
+  private url = 'http://sid-mean-stack.centralus.cloudapp.azure.com:5200';
   private employees$: Subject<Employee[]> = new Subject();
 
   constructor(private httpClient: HttpClient) { }
