@@ -1,0 +1,23 @@
+version : '3.4'
+services:
+  db:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    network_mode: bridge
+  server:
+    build: ./server
+    image : mean-stack-server 
+    container_name : ms-server 
+    ports:
+      - "5200:5200"
+    restart: always
+    network_mode: bridge  
+  client:
+    build: ./client
+    image: mean-stack-client
+    container_name: ms-client
+    ports:
+      - "80:4200"
+    network_mode: bridge
